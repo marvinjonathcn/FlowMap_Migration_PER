@@ -56,9 +56,27 @@
       map.setView([-10, -74], 6);
     }
 
-    L.esri.basemapLayer('Topographic').addTo(map);
+    var OpenTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+      maxZoom: 17,
+      attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+    });
 
-    Papa.parse('../csv-data/Data_FlujoMigracion_2007_v3.csv', {
+    //L.esri.basemapLayer('DarkGray').addTo(map);
+    OpenTopoMap.addTo(map);
+
+    var customControl = L.Control.extend({
+      options: {
+        position: 'topright'
+      },
+      onAdd: function (map) {
+        var container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+        container.innerHTML = '<input type="text" placeholder="Principales flujos migratorios de sierra a selva en el Perú"/>';
+        return container;
+      }});
+      
+    map.addControl(new customControl());
+
+    Papa.parse('../csv-data/Data_FlujoMigracion_2007_v2.csv', {
       download: true,
       header: true,
       dynamicTyping: true,
@@ -113,7 +131,7 @@
 
         // immediately select an origin point for Bezier path display,
         // instead of waiting for the first user click event to fire
-        oneToManyFlowmapLayer.selectFeaturesForPathDisplayById('s_city_id', 562, true, 'SELECTION_NEW');
+        oneToManyFlowmapLayer.selectFeaturesForPathDisplayById('s_city_id', 80101, true, 'SELECTION_NEW');
       }
     });
 
