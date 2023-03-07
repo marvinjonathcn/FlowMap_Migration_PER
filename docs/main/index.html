@@ -68,6 +68,24 @@
     
     titulo.addTo(map);
 
+    // Cargar el archivo GeoJSON utilizando AJAX o fetch
+    fetch('../spatial-data/Distritos_PER.geojson')
+    .then(response => response.json())
+    .then(data => {
+      // Definir el estilo de los polígonos
+      var polygonStyle = {
+        fillColor: 'transparent',
+        color: 'black',
+        weight: 2,
+        fillOpacity: 0.0
+      };
+      
+      // Crear la capa de GeoJSON y agregarla al mapa
+      L.geoJSON(data, {
+        style: polygonStyle
+      }).addTo(map);
+    });
+
     Papa.parse('../csv-data/Data_FlujoMigracion_2007_v2.csv', {
       download: true,
       header: true,
