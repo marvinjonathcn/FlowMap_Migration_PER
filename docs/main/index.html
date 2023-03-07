@@ -54,21 +54,15 @@
       map.setView([-10, -74], 5);
     } else {
       map.setView([-10, -74], 6);
-    }
+    }    
 
-    var Stadia_AlidadeSmoothDark = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
-      maxZoom: 20,
-	    attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-    });
-
-    //L.esri.basemapLayer('DarkGray').addTo(map);
-    Stadia_AlidadeSmoothDark.addTo(map);
-
+    L.esri.basemapLayer('DarkGray').addTo(map);
+    
     var titulo = L.control({position: 'topright'});
 
     titulo.onAdd = function (map) {
       var div = L.DomUtil.create('div', 'titulo');
-      div.innerHTML = '<h1>Principales flujos migratorios de sierra a selva en el Perú - 2007</h1>';
+      div.innerHTML = '<h2>Principales flujos migratorios de sierra a selva en el Perú - 2007</h2>';
       return div;
     };
     
