@@ -62,7 +62,7 @@
     });
 
     //L.esri.basemapLayer('DarkGray').addTo(map);
-    tadia_AlidadeSmoothDark.addTo(map);
+    Stadia_AlidadeSmoothDark.addTo(map);
 
     var titulo = L.control({position: 'topright'});
 
@@ -72,7 +72,7 @@
       return div;
     };
     
-    //titulo.addTo(map);
+    titulo.addTo(map);
 
     Papa.parse('../csv-data/Data_FlujoMigracion_2007_v2.csv', {
       download: true,
