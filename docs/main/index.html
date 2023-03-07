@@ -51,14 +51,14 @@
     var map = L.map('map');
 
     if (L.Browser.mobile) {
-      map.setView([-10, -74], 7);
+      map.setView([-10, -74], 5);
     } else {
-      map.setView([-10, -74], 8);
+      map.setView([-10, -74], 6);
     }
 
     L.esri.basemapLayer('Topographic').addTo(map);
 
-    Papa.parse('../csv-data/Data_FlujoMigracion_2007_v2.csv', {
+    Papa.parse('../csv-data/Data_FlujoMigracion_2007_v3.csv', {
       download: true,
       header: true,
       dynamicTyping: true,
